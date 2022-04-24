@@ -1,0 +1,22 @@
+{
+  "name": "matrix-bridges",
+  "version": "0.0.1",
+  "description": "A few Matrix bridges I might use and my personal bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "robin@robinsch.net",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^7.5.0",
+    "chartjs-node-canvas": "^4.1.6",
+    "discord-rpc": "^4.0.1",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "imap": "^0.8.19",
+    "mailparser": "^3.4.0",
+    "matrix-js-sdk": "^15.6.0"
+  }
+}

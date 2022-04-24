@@ -1,0 +1,64 @@
+version: "3.3"
+
+services:
+    matrix-synapse:
+        container_name: matrix-synapse
+        image: "matrixdotorg/synapse:latest"
+        restart: always
+        volumes:
+            - synapse:/data
+        environment:
+            SYNAPSE_SERVER_NAME: ${MATRIX_HOMESERVER}
+            SYNAPSE_REPORT_STATS: "no"
+        ports:
+            - 0.0.0.0:8008:8008
+
+    matrix-discord-bridge:
+        container_name: matrix-discord-bridge
+        image: sorunome/mx-puppet-discord
+        restart: always
+        volumes:
+            - discord-bridge:/data
+
+    matrix-signal-bridge:
+        container_name: matrix-signal-bridge
+        image: dock.mau.dev/mautrix/signal:latest
+        restart: always
+        volumes:
+            - signal-bridge:/data
+            - signal-signald:/signald
+        depends_on:
+            - matrix-signal-signald
+
+    matrix-signal-signald:
+        container_name: matrix-signal-signald
+        image: signald/signald:latest
+        restart: always
+        volumes:
+            - signal-signald:/signald
+
+    matrix-signal-db:
+        container_name: matrix-signal-db
+        image: postgres:13-alpine
+        restart: always
+        volumes:
+            - signal-db:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: mautrixsignal
+            POSTGRES_DATABASE: mautrixsignal
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    matrix-whatsapp-bridge:
+        container_name: matrix-whatsapp-bridge
+        image: dock.mau.dev/mautrix/whatsapp:latest
+        restart: always
+        volumes:
+            - whatsapp-bridge:/data
+
+volumes:
+    synapse:
+    discord-bridge:
+    signal-bridge:
+    signal-signald:
+    signal-db:
+    whatsapp-bridge:
