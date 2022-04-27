@@ -1,10 +1,11 @@
 require('dotenv').config();
 
-const { DiscordClient, DiscordRPCClient, replyDiscord } = require('./clients/discord.js');
-const { handleCommand } = require('./clients/handleCommand.js');
-const { MatrixClient, IsMatrixClientPrepared, replyMatrix } = require('./clients/matrix.js');
-const { getEmails } = require('./clients/imap.js');
-const { app } = require('./clients/web.js');
+const { join } = require('path');
+const { DiscordClient, DiscordRPCClient, replyDiscord } = require(join(__dirname, './clients/discord.js'));
+const { handleCommand } = require(join(__dirname, './clients/handleCommand.js'));
+const { MatrixClient, IsMatrixClientPrepared, replyMatrix } = require(join(__dirname, './clients/matrix.js'));
+const { getEmails } = require(join(__dirname, './clients/imap.js'));
+const { app } = require(join(__dirname, './clients/web.js'));
 
 const {
     MATRIX_ROOM_ID,

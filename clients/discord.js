@@ -1,4 +1,4 @@
-const { Client, Intents, MessageAttachment, Message } = require('discord.js');
+const { Client, Intents, MessageAttachment } = require('discord.js');
 const { Client: RPCClient } = require('discord-rpc');
 
 const {

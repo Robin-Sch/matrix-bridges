@@ -1,5 +1,6 @@
-const { calculateInterestedCoinPrices, calculatePortfolio, getCoinPriceChart, getPortfolioChart } = require('../crypto-portfolio-calculator/utils/calculate.js');
-const { loadWalletsFromEnv } = require('../crypto-portfolio-calculator/utils/wallets.js');
+const { join } = require('path');
+const { calculateInterestedCoinPrices, calculatePortfolio, getCoinPriceChart, getPortfolioChart } = require(join(__dirname, '../crypto-portfolio-calculator/utils/calculate.js'));
+const { loadWalletsFromEnv } = require(join(__dirname, '../crypto-portfolio-calculator/utils/wallets.js'));
 
 const {
     FIAT,

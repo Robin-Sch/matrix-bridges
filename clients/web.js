@@ -1,8 +1,9 @@
 const express = require('express');
+const { join } = require('path');
 const app = express();
 
-const { replyDiscord } = require('./discord.js');
-const { replyMatrix } = require('./matrix.js');
+const { replyDiscord } = require(join(__dirname, './discord.js'));
+const { replyMatrix } = require(join(__dirname, './matrix.js'));
 
 const {
     DISCORD_CHANNEL_ID,
